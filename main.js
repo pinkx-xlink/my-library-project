@@ -85,7 +85,11 @@ document.getElementById("#new-book-form").addEventListener("submit", function(ev
 
 
 set saveBook(value) {
-    
+    [this.title, this.author, this.pages] = value.splite(" ");
+},
+
+get saveBook() {
+    return ``
 }
 
 // troubleshooting savebookbtn!!
