@@ -89,8 +89,8 @@ set saveBook(value) {
 },
 
 get saveBook() {
-    return ``
-}
+    return `${this.title} ${this.author} ${this.pages}`;
+};
 
 // troubleshooting savebookbtn!!
 // function saveBook(Book) {
