@@ -40,15 +40,14 @@ function render() {
     bookElement.setAttribute("class", "book-card");
     // NEED TO APPEND THE INPUT AS NEW DIVS (MAKE THEM STAY WHEN PRESSING "ADD BOOK" BTN)
     bookElement.innerHTML = `
-              <label for="title">Title: </label>
-              <input type="text" id="title">
-              <label for="author">Author: </label>
-              <input type="text" id="author">
-              <label for="pages">Pages: </label>
-              <input type="text" id="pages">
-              <label for="read">Read: </label>
-              <input type="checkbox" id="read">
-              <input type="submit" value="Add Book">   
+            <div class="card-header">
+              <h3 class="title">${book.title}</h3>
+              <h5 class="author">by ${book.author}</h5>
+            </div>
+            <div class="card-body">
+              <p>${book.pages}</p>
+              // read
+            </div>
         `;
     libraryElement.appendChild(bookElement);
   } 
@@ -63,16 +62,19 @@ function removeBook(index) {
   myLibrary.splice(index, 1);
   render();
 }
+
+
+
 //function to SAVE BOOK to library
 
-let newBookBtn = document.getElementById("new-book-btn");
+let newBookBtn = document.querySelector("#new-book-btn");
 newBookbtn.addEventListener("click", function() {
-  let newBookForm = document.getElementById("new-book-form");
+  let newBookForm = document.querySelector("#new-book-form");
   newBookForm.style.display = "block";
 })
 
-document.getElementById("new-book-form").addEventListener("submit", function(event) {
-  e.preventDefault();
+document.getElementById("#new-book-form").addEventListener("submit", function(event) {
+  event.preventDefault();
   addBookToLibrary();
 })
 
