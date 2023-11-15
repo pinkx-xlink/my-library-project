@@ -19,34 +19,29 @@ function toggleRead(index) {
   render()
 }
 
-function addBookToLibrary(){
-  let title = document.getElementById("title").value; //maybe remove #?
-  let author = document.getElementById("author").value;
-  let pages = document.getElementById("pages").value;
-  let read = document.getElementById("read").checked;
-  let newBook = new Book(title, author, pages, read);
-  console.log(newBook);
-  myLibrary.push(newBook);
-  render();
-  // do stuff here
-}
-
 function render() {
-  let libraryElement = document.getElementById("library");
+  let libraryElement = document.querySelector("#library");
   libraryElement.innerHTML = "";
   for (let i = 0; i < myLibrary.length; i++) {
     let Book = myLibrary[i];
     let bookElement = document.createElement("div");
     bookElement.setAttribute("class", "book-card");
+
+
     // NEED TO APPEND THE INPUT AS NEW DIVS (MAKE THEM STAY WHEN PRESSING "ADD BOOK" BTN)
     bookElement.innerHTML = `
-            <div class="card-header">
-              <h3 class="title">${book.title}</h3>
-              <h5 class="author">by ${book.author}</h5>
-            </div>
-            <div class="card-body">
-              <p>${book.pages}</p>
-              // read
+            <div class="card">
+            <label for="title">Title: </label>
+            <input type="text" id="title">
+            <label for="author">Author: </label>
+            <input type="text" id="author">
+            <label for="pages">Pages: </label>
+            <input type="text" id="pages">
+    
+            <label for="read">Read: </label>
+            <input type="checkbox" id="read">
+            <button class="remove-btn" onclick="removeBook(${i})">Remove</button>
+            <input type="submit" value="Add Book"> 
             </div>
         `;
     libraryElement.appendChild(bookElement);
@@ -63,7 +58,17 @@ function removeBook(index) {
   render();
 }
 
-
+function addBookToLibrary(){
+  let title = document.querySelector("title").value; //maybe remove #?
+  let author = document.getElementById("author").value;
+  let pages = document.getElementById("pages").value;
+  let read = document.getElementById("read").checked;
+  let newBook = new Book(title, author, pages, read);
+  console.log(newBook);
+  myLibrary.push(newBook);
+  render();
+  // do stuff here
+}
 
 //function to SAVE BOOK to library
 
